@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Content Script</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="content.js"></script>
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot chatbot--closed" id="chatbotId">
+          <div class="chatbot-div">
+            <div class="chatbot__header">
+              <!-- <p><strong>Got a question?</strong> <span class="u-text-highlight">Alpha Can Guide you</span></p> -->
+              <img class="chatbot__close-button icon-speech" viewBox="0 0 32 32" src="./public/message.svg">
+              <img class="chatbot__close-button icon-close" src="./public/close-circle-svgrepo-com.svg">
+            </div>
+            <image src="./public/maxim.svg" class="chatbot__maximize-button maxi__icon chatbot__close-button icon-close" id="maxiId"></image>
+            <div class="chatbot__content">
+              <div class="chatbot__message-window">
+                <ul class="chatbot__messages">
+                  <li class="is-ai animation">
+                    <div class="is-ai__profile-picture">
+                      <img class="icon-avatar" src="data:image/png;base64,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" alt="">
+                    </div>
+                    <span class="chatbot__arrow chatbot__arrow--left"></span>
+                    <p class='chatbot__message' id="chatbot__message__1">
+                        <!-- <pre><code> -->
+                        Hi there 🖐. I’m Alpha, your virtual assistant. I'm here to help with your general enquiries.
+                          <!-- </code></pre> -->
+                    </p>
+                    <!-- <img src="./public/clipboard-text-svgrepo-com.svg" class="copy_msg" id="msg_img_1" onclick="copyContent(`Hi there 🖐. I’m Alpha, your virtual assistant. I'm here to help with your general enquiries.`,1)" alt=""> -->
+                    <div class="chatbot__response" id="output">output</div>
+                  </li>
+                  <!-- Answer and response added here -->
+                </ul>
+              </div>
+              <div class="chatbot__entry chatbot--closed">
+                <input type="text" class="chatbot__input" placeholder="Click on Microphone and ask your query ..." />
+                <img class="chatbot__submit" id="chatbot__submitId" src="https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png">
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+      <script src="chat.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

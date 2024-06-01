@@ -1,0 +1,44 @@
+{
+    "manifest_version": 3,
+    "name": "LLM Voice Assistant",
+    "description": "Speech assistant",
+    "version": "1.1.0",
+    "icons": {
+		"48": "public/icon_48.png",
+		"128": "public/icon_128.png"
+	},
+    "action": {
+        "default_icon":{
+            "19": "public/icon_19.png",
+            "38": "public/icon_38.png"
+          },
+        "default_popup": "home.html",
+        "default_title": "Click To Open LLM Assistant"
+    },
+    "content_scripts": [
+        {
+           "matches": ["<all_urls>"],
+           "js": ["content.js"],
+           "run_at": "document_end"
+        }
+      ],
+          "web_accessible_resources": [
+        {
+            "resources": ["permissions.html","content.html","demo.html"],
+            "matches": ["<all_urls>"]
+        }
+    ],
+    "background":{
+        "service_worker" : "background.js"
+    },
+    "permissions": [
+        "tabs",
+        "storage",
+        "scripting", 
+        "activeTab",
+        "windows"
+    ],
+    "chrome_url_overrides": {
+        "newtab": "home.html"
+    }
+}
